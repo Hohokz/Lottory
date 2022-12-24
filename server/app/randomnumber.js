@@ -42,6 +42,8 @@ genRandomNum.post("/", async (req, res) => {
 
 genRandomNum.get("/check", async (req, res) => {
 
+    console.log(req.body)
+
     let keyword = req.body.keyword;
 
     if (keyword.length !== 3) {

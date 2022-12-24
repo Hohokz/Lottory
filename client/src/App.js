@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./conponent/header.js";
 import RandomNumber from './conponent/random_number';
+import NumberForm from "./conponent/check.js";
 import './App.css'
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <>
         <Menu />
         <RandomNumber />
-
+        <NumberForm />
       </>
 
     </div>
