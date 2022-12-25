@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-grid.css';
 
 
 export default function RandomNumber() {
 
     const [randomNumber, setRandomNumber] = useState({
-        randomFirstPrize: "",
-        nearFirstPrizeLeft: "",
-        nearFirstPrizeRight: "",
-        randomSecondPrize: "",
-        twoNumberPrize: ""
+        randomFirstPrize: "xxx",
+        nearFirstPrizeLeft: "xxx",
+        nearFirstPrizeRight: "xxx",
+        randomSecondPrize: "xxx",
+        twoNumberPrize: "xxx"
     });
 
     function Generate() {
@@ -32,11 +34,14 @@ export default function RandomNumber() {
 
 
         < div >
+            <div>
+                <button className="btn btn-primary mb-4" onClick={Generate}>ดำเนินการสุ่ม</button>
+            </div>
             < div >
                 <h1>รางวัลที่ 1 : {randomNumber.randomFirstPrize} </h1>
             </div >
             <div>
-                <h2>รางวัลใกล้เคียงรางวัลที่ 1 : {randomNumber.nearFirstPrizeLeft} </h2> <h2> , {randomNumber.nearFirstPrizeRight} </h2>
+                <h2>รางวัลใกล้เคียงรางวัลที่ 1 : </h2><h2>{randomNumber.nearFirstPrizeLeft} , {randomNumber.nearFirstPrizeRight} </h2>
             </div>
 
             <div>
@@ -49,10 +54,6 @@ export default function RandomNumber() {
                     รางวัลเลขท้ายสองตัว : {randomNumber.twoNumberPrize}
                 </h2>
             </div>
-
-            <button onClick={Generate}>Generate for Reward</button>
-
-
         </div >
 
     );
