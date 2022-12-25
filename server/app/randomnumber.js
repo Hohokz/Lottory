@@ -16,6 +16,8 @@ genRandomNum.get("/", async (req, res) => {
 
 genRandomNum.post("/", async (req, res) => {
 
+
+
     const collection = db.collection("randomNumber");
 
     let frist = (Math.floor(Math.random() * (999) + 1)).toString().padStart(3, '0');
@@ -42,14 +44,14 @@ genRandomNum.post("/", async (req, res) => {
 
 genRandomNum.get("/check", async (req, res) => {
 
-    console.log(req.body)
+    console.log(req.query)
 
-    let keyword = req.body.keyword;
+    let keyword = req.query.keyword;
 
     if (keyword.length !== 3) {
         return res.json({
             status: "fail",
-            message: "ใส่เลขไม่ครบนะ"
+            message: "คุณใส่เลขไม่ครบนะ"
         })
     }
     const collection = db.collection("randomNumber");
@@ -58,15 +60,15 @@ genRandomNum.get("/check", async (req, res) => {
 
 
     if (keyword === number.randomFirstPrize) {
-        hitPrize.push("รางวัลที่ 1")
+        hitPrize.push("ยินดีด้วยคุณถูกรางวัลที่ 1")
     } if (keyword === number.randomSecondPrize) {
-        hitPrize.push("รางวัลที่ 2")
+        hitPrize.push("ยินดีด้วยคุณถูกรางวัลที่ 2")
     } if (keyword === number.nearFirstPrizeLeft || keyword === number.nearFirstPrizeRight) {
-        hitPrize.push("ใกล้เตียงรางวัลที่รางวัลที่ 1")
+        hitPrize.push("ยินดีด้วยคุณถูกใกล้เคียงรางวัลที่รางวัลที่ 1")
     } if (keyword.substr(1, keyword.length) === number.twoNumberPrize) {
-        hitPrize.push("ท้ายสองคัว 1")
+        hitPrize.push("ยินดีด้วยคุณถูกรางวัลเลขท้ายสองตัว")
     } if (hitPrize.length === 0) {
-        hitPrize.push("คุณไม่ถูกรางวัลนะ")
+        hitPrize.push("เสียใจจริงๆ คุณไม่ถูกรางวัล")
     }
 
     return res.json({
